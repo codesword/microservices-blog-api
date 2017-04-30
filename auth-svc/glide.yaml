@@ -1,8 +1,10 @@
 package: github.com/codesword/microservices-blog-api/auth-svc
 import:
 - package: github.com/codesword/microservices-blog-api
-  version: ^0.1.0
+  version: ~0.1.0
   subpackages:
+  - auth-svc/controllers
+  - auth-svc/server
   - pb/authorization
 - package: github.com/inconshreveable/log15
   version: ^2.11.0
