@@ -1,0 +1,74 @@
+syntax = "proto3";
+package blog;
+import "blog/blog.proto";
+import "google/api/annotations.proto";
+
+
+
+service BlogSvc {
+  rpc GetPost (blog.Slug) returns (blog.Post) {
+    option (google.api.http).get = "/v1/posts/{slug}";
+  }
+  rpc ListPosts (blog.BlogListRequest) returns (blog.Posts) {
+    option (google.api.http).get = "/v1/posts";
+  }
+  rpc CreatePost (blog.Post) returns (blog.Post) {
+    option (google.api.http) = {
+      post: "/v1/posts"
+      body: "*"
+    };
+  }
+  rpc updateMyPost (blog.Post) returns (blog.Post) {
+    option (google.api.http) = {
+      put: "/v1/posts/me/{id}"
+      body: "*"
+    };
+  }
+  rpc updatePost (blog.Post) returns (blog.Post) {
+    option (google.api.http) = {
+      put: "/v1/posts/{id}"
+      body: "*"
+    };
+  }
+  rpc DeleteMyPost (blog.Id) returns (blog.Empty) {
+    option (google.api.http) = {
+      delete: "/v1/posts/me/{id}"
+    };
+  }
+  rpc DeletePost (blog.Id) returns (blog.Empty) {
+    option (google.api.http) = {
+      delete: "/v1/posts/{id}"
+    };
+  }
+  rpc ListCommentsForAPost (blog.Empty) returns (blog.Comments) {
+    option (google.api.http).get = "/v1/posts/{post_id}/comments";
+  }
+  rpc CreateComment (blog.Comment) returns (blog.Comment) {
+    option (google.api.http) = {
+      post: "/v1/posts/{post_id}/comments"
+      body: "*"
+    };
+  }
+  rpc updateMyComment (blog.Comment) returns (blog.Comment) {
+    option (google.api.http) = {
+      put: "/v1/posts/me/{post_id}/comments/{id}"
+      body: "*"
+    };
+  }
+  rpc updateComment (blog.Comment) returns (blog.Comment) {
+    option (google.api.http) = {
+      put: "/v1/posts/{post_id}/comments/{id}"
+      body: "*"
+    };
+  }
+  rpc DeleteMyComment (blog.Id) returns (blog.Empty) {
+    option (google.api.http) = {
+      delete: "/v1/posts/me/{id}"
+    };
+  }
+  rpc DeleteComment (blog.Id) returns (blog.Empty) {
+    option (google.api.http) = {
+      delete: "/v1/posts/{id}"
+    };
+  }
+}

@@ -1,0 +1,46 @@
+syntax = "proto3";
+package blog;
+
+
+message Empty {}
+
+message Id {
+  string id = 1;
+}
+
+message Slug {
+  string slug = 1;
+}
+
+message Comment {
+  string id = 1;
+  string content = 2;
+  string user_id = 3;
+  string post_id = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}
+
+message Comments {
+  repeated Comment values = 1;
+}
+
+message Post {
+  string id = 1;
+  string title = 2;
+  string slug = 3;
+  string body = 4;
+  repeated Comment comments = 5;
+  string created_at = 6;
+  string updated_at = 7;
+}
+
+message Posts {
+  repeated Post values = 1;
+}
+
+message BlogListRequest {
+  string search_text = 1;
+  int32 page_number = 2;
+  int32 results_per_page = 3;
+}
