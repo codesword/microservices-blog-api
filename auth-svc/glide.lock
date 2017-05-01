@@ -1,8 +1,8 @@
-hash: 3a044fa297cf742e622cb6df5acf38ab712742688020fdd7be9bc435ce51b8df
-updated: 2017-04-30T18:39:55.120160482+01:00
+hash: b20185d7b8ecfd8fee4075f183ad2069c1f169084fa74c9a637a05b3bea39fa6
+updated: 2017-05-01T01:11:33.295346954+01:00
 imports:
 - name: github.com/codesword/microservices-blog-api
-  version: 251bcb6c13746a822eb69ad4945698484672c9ae
+  version: 6c55cc8c1d64834e5508bc9bd831d6d8e1478261
   subpackages:
   - auth-svc/controllers
   - auth-svc/server
@@ -66,4 +66,40 @@ imports:
   subpackages:
   - stack
   - term
-testImports: []
+testImports:
+- name: github.com/onsi/ginkgo
+  version: 77a8c1e5c40d6bb6c5eb4dd4bdce9763564f6298
+  subpackages:
+  - config
+  - internal/codelocation
+  - internal/containernode
+  - internal/failer
+  - internal/leafnodes
+  - internal/remote
+  - internal/spec
+  - internal/spec_iterator
+  - internal/specrunner
+  - internal/suite
+  - internal/testingtproxy
+  - internal/writer
+  - reporters
+  - reporters/stenographer
+  - reporters/stenographer/support/go-colorable
+  - reporters/stenographer/support/go-isatty
+  - types
+- name: github.com/onsi/gomega
+  version: 334b8f472b3af5d541c5642701c1e29e2126f486
+  subpackages:
+  - format
+  - internal/assertion
+  - internal/asyncassertion
+  - internal/oraclematcher
+  - internal/testingtsupport
+  - matchers
+  - matchers/support/goraph/bipartitegraph
+  - matchers/support/goraph/edge
+  - matchers/support/goraph/node
+  - matchers/support/goraph/util
+  - types
+- name: gopkg.in/yaml.v2
+  version: cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b
