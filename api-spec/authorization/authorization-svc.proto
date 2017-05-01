@@ -1,0 +1,69 @@
+syntax = "proto3";
+package authorization;
+import "google/api/annotations.proto";
+import "authorization/authorization.proto";
+
+
+
+service AuthorizationSvc {
+   /* Get a single user permission
+      
+  */
+  rpc GetPermission(authorization.ID) returns (authorization.Permission) {
+    option (google.api.http) = { get: "/v1/permissions/{id}" };
+  }
+  rpc ListPermissions(authorization.Empty) returns (authorization.Permissions) {
+    option (google.api.http) = {
+      get: "/v1/permissions"
+    };
+  }
+  rpc AlterPermissions(authorization.AlterPermissionsRequest) returns (authorization.Empty) {
+    option (google.api.http) = { put: "/v1/permissions" body: "*" };
+  }
+  rpc ListRoles(authorization.Empty) returns (authorization.Roles) {
+    option (google.api.http) = {
+      get: "/v1/roles"
+    };
+  }
+  rpc CreateRole(authorization.Role) returns (authorization.Role) {
+    option (google.api.http) = {
+      post: "/v1/roles"
+      body: "*"
+    };
+  }
+  rpc UpdateRole(authorization.Role) returns (authorization.Role) {
+    option (google.api.http) = {
+      put: "/v1/roles"
+      body: "*"
+    };
+  }
+  rpc GetRole(authorization.ID) returns (authorization.Role) {
+    option (google.api.http) = {
+      get: "/v1/roles/{id}"
+    };
+  }
+  rpc AssignPermissionsToRole(authorization.PermissionsToRoleRequest) returns (authorization.Empty) {
+    option (google.api.http) = {
+      put: "/v1/roles/{role_id}/permissions"
+      body: "*"
+    };
+  }
+  rpc AssignRolesToPermission(authorization.RolesToPermissionRequest) returns (authorization.Empty) {
+    option (google.api.http) = {
+      put: "/v1/permissions/{permission_id}/roles"
+      body: "*"
+    };
+  }
+  rpc AssignRolesToUser(authorization.RolesToUserRequest) returns (authorization.Empty) {
+    option (google.api.http) = {
+      put: "/v1/users/{user_id}/roles"
+      body: "*"
+    };
+  }
+  rpc AssignUsersToRole(authorization.UsersToRoleRequest) returns (authorization.Empty) {
+    option (google.api.http) = {
+      put: "/v1/roles/{role_id}/users"
+      body: "*"
+    };
+  }
+}

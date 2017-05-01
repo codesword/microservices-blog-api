@@ -1,0 +1,61 @@
+syntax = "proto3";
+package authorization;
+message Empty {}
+
+//Input object
+message ID {
+  // Unique identifier for permissions
+  string id = 1;
+}
+
+message Permission {
+  string id = 1;
+  string name = 2;
+  string created_at = 3;
+  string updated_at = 4;
+}
+
+message Permissions {
+  repeated Permission values = 1;
+}
+
+message AlterPermissionsRequest {
+  repeated string names = 1;
+}
+
+message Role {
+  string id = 1;
+  string name = 2;
+  string created_at = 3;
+  string updated_at = 4;
+}
+
+message Roles {
+  repeated Role values = 1;
+}
+
+message PermissionsToRoleRequest {
+  string role_id = 1;
+  repeated string permission_ids = 2;
+}
+
+message RolesToPermissionRequest {
+  string permission_id = 1;
+  repeated string role_ids = 2;
+}
+
+message RolesToUserRequest {
+  string user_id = 1;
+  repeated string role_ids = 2;
+}
+
+message UsersToRoleRequest {
+  string role_id = 1;
+  repeated string user_ids = 2;
+}
+
+
+message AuthorizeRequest {
+  string user_id = 1;
+  string method = 2;
+}
